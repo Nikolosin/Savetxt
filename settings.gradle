@@ -1,0 +1,2 @@
+rootProject.name='Savetxt'
+include ':app'

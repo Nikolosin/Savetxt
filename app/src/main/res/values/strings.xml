@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Savetxt</string>
+    <string name="add">Добавить</string>
+    <string name="nameAuthor">Николай Петренко</string>
+    <string-array name="sample">
+        <item>Первый Android проект</item>
+        <item>Собственный Hello world</item>
+        <item>Интерфейс калькулятора</item>
+        <item>Действия калькулятора</item>
+        <item>Переключение цветов в приложении</item>
+        <item>Список с custom элементами</item>
+    </string-array>
+
+</resources>
