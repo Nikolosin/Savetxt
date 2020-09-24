@@ -56,7 +56,7 @@ public class SampleAdapter extends BaseAdapter {
 
         final ItemData itemData = items.get(position);
 
-        TextView title  = view.findViewById(R.id.nameSample);
+        TextView title = view.findViewById(R.id.nameSample);
 
         ImageView btnDel = view.findViewById(R.id.btnDel);
         btnDel.setOnClickListener(new View.OnClickListener() {
@@ -75,26 +75,26 @@ public class SampleAdapter extends BaseAdapter {
     }
 
     public void delItem(String string) {
-        final File logFile = new File(ctx.getApplicationContext().getExternalFilesDir(null),"Sample.txt");
-        try {
-            FileReader logReader = new FileReader(logFile);
-            BufferedReader reader = new BufferedReader(logReader);
-            String[] samples = reader.readLine().split(";");
-            FileWriter logWriter = new FileWriter(logFile);
+        final File logFile = new File(ctx.getApplicationContext().getExternalFilesDir(null), "Sample.txt");
+        if (logFile.length() == 0) {
+            try (FileWriter logWriter = new FileWriter(logFile)) {
+                FileReader logReader = new FileReader(logFile);
+                BufferedReader reader = new BufferedReader(logReader);
+                String[] samples = reader.readLine().split(";");
 
-            for (String s : samples ) {
-                if (s != string) {
-                    logWriter.append(s + ";");
+                for (String s : samples) {
+                    if (s.equals(string)) {
+                    } else {
+                        logWriter.append(s).append(";");
+                    }
                 }
+                logReader.close();
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            logWriter.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
+
         }
-
-
     }
-
-
 }
